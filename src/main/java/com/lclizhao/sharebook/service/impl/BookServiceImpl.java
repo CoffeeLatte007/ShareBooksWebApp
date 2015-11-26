@@ -32,7 +32,8 @@ public class BookServiceImpl implements BookService{
     }
 
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,readOnly = false)
-    public void save(Book book) {
+    public Book save(Book book) {
         bookDao.save(book);
+        return book;
     }
 }

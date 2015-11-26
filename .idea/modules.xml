@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ShareBooksWebApp.iml" filepath="$PROJECT_DIR$/ShareBooksWebApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShareBook.iml" filepath="$PROJECT_DIR$/ShareBook.iml" />
     </modules>
   </component>
 </project>

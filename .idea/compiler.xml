@@ -22,10 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="ShareBooksWebApp" />
+        <module name="ShareBook" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ShareBook" target="1.7" />
       <module name="ShareBooksWebApp" target="1.7" />
     </bytecodeTargetLevel>
   </component>

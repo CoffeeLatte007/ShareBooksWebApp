@@ -20,7 +20,7 @@ public interface BookService {
      *
      * @param book
      */
-    public void save(Book book);
+    public Book save(Book book);
     /**
      * 查询图书
      *
