@@ -3,8 +3,6 @@ package com.lclizhao.sharebook.daomain;/**
  */
 
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 
@@ -20,9 +18,7 @@ public class HibernateUtils {
     static {
         Configuration configuration=new Configuration();
         configuration.configure("hibernate.cfg.xml");
-        StandardServiceRegistryBuilder serviceRegistryBuilder  = new StandardServiceRegistryBuilder();
-        serviceRegistryBuilder.applySettings(configuration.getProperties());
-        StandardServiceRegistry serviceRegisty=serviceRegistryBuilder.build();
-         sessionFactory=configuration.buildSessionFactory(serviceRegisty);
+
+         sessionFactory=configuration.buildSessionFactory();
     }
 }

@@ -25,5 +25,8 @@
         <module name="ShareBooksWebApp" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ShareBooksWebApp" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -5,6 +5,7 @@ package com.lclizhao.sharebook.daomain;/**
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @Name:Book
@@ -15,7 +16,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="book")
-public class Book {
+public class Book implements Serializable{
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid",strategy = "uuid")
