@@ -5,6 +5,8 @@ package com.lclizhao.sharebook;/**
 import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * @Name:
@@ -16,6 +18,7 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/webapi/*")
 public class AirResourceConfig extends ResourceConfig {
     public AirResourceConfig() {
+
         packages("com.lclizhao.resouce");
         /**register(BookResource.class);**/
     }

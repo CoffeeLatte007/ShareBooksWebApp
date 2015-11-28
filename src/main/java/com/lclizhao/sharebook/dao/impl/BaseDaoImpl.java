@@ -4,6 +4,8 @@ package com.lclizhao.sharebook.dao.impl;/**
 
 import com.lclizhao.sharebook.dao.BaseDao;
 import com.lclizhao.utils.ClassUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import java.util.Map;
  * @Description:
  */
  class BaseDaoImpl<T>  implements BaseDao<T> {
+    private final Logger logger= LogManager.getLogger(BaseDao.class.getName());
     Class entityClass = ClassUtil.getActualType(this.getClass());
     @Autowired
     private SessionFactory sessionFactory;

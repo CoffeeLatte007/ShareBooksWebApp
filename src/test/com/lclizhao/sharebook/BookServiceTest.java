@@ -1,4 +1,4 @@
-package com.lclizhao.sharebook.daoandservice;/**
+package com.lclizhao.sharebook;/**
  * Created by lizhaoz on 2015/11/26.
  */
 
