@@ -3,10 +3,15 @@ package com.lclizhao.sharebook;/**
  */
 
 import com.lclizhao.sharebook.daomain.Book;
+import com.lclizhao.sharebook.daomain.User;
 import com.lclizhao.sharebook.service.BookService;
+import com.lclizhao.sharebook.service.UserService;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.logging.Logger;
 
 /**
  * @Name:
@@ -16,8 +21,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Description:测试Service和Dao
  */
 public class BookServiceTest {
+    private final org.apache.logging.log4j.Logger logger= LogManager.getLogger(BookServiceTest.class.getName());
     @Test
-    public void testService(){
+    public void testService1(){
         ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
         BookService bookService= (BookService) context.getBean("bookService");
         Book book=new Book();
@@ -25,5 +31,25 @@ public class BookServiceTest {
         book.setAuthor("周志明");
         book.setiSBN("232183217832");
         bookService.save(book);
+    }
+    @Test
+    public void testService2(){
+        ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService=(UserService)context.getBean("userService");
+        User user =userService.findUserByTel("1842836864");
+        if(user!=null){
+        logger.debug(user.getTelphone());
+        }
+
+    }
+    @Test
+    public void testService3(){
+        ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService=(UserService)context.getBean("userService");
+        User user =userService.findUserByTel("1842836864");
+        if(user!=null){
+            logger.debug(user.getTelphone());
+        }
+
     }
 }

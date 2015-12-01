@@ -5,6 +5,8 @@ package com.lclizhao.sharebook.service.impl;/**
 import com.lclizhao.sharebook.dao.BookDao;
 import com.lclizhao.sharebook.daomain.Book;
 import com.lclizhao.sharebook.service.BookService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -24,6 +26,7 @@ import java.util.List;
 //设置统一的只读事务,具体的在下面细粒度配置
 @Transactional(readOnly = true)
 public class BookServiceImpl implements BookService{
+    private final Logger logger= LogManager.getLogger(BookServiceImpl.class.getName());
     @Autowired
     BookDao bookDao;
     @Override

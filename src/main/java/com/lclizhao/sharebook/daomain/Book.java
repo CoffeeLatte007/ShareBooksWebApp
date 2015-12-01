@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * @Name:Book
@@ -28,8 +29,20 @@ public class Book implements Serializable{
     private String author;
     @Column(name ="coverUrl",nullable = true)
     private String coverUrl;
-    @Column(name = "iSBN",nullable = false,length = 20)
+    @Column(name = "iSBN",nullable = true,length = 20)
     private String iSBN;
+    @Column(name = "publisher",nullable=true,length = 30)
+    private String publisher;
+    @OneToMany(cascade={CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},fetch=FetchType.LAZY,mappedBy="user")
+    private Set<User_Book> user_book;
+
+    public Set<User_Book> getUser_book() {
+        return user_book;
+    }
+
+    public void setUser_book(Set<User_Book> user_book) {
+        this.user_book = user_book;
+    }
 
     public String getAuthor() {
         return author;
@@ -69,5 +82,13 @@ public class Book implements Serializable{
 
     public void setiSBN(String iSBN) {
         this.iSBN = iSBN;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 }

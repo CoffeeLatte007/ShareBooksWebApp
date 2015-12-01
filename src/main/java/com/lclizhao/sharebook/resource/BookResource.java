@@ -30,9 +30,14 @@ public class BookResource  {
      * @return Book
      */
     @POST
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_XML })
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Consumes({ MediaType.APPLICATION_JSON })
     public Book save(final Book book){
-        return bookService.save(book);
+        if(book!=null&&book.getBookName()!=null){
+            return bookService.save(book);
+        }
+        book.setBookName("添加失败");
+        return book;
     }
+
 }

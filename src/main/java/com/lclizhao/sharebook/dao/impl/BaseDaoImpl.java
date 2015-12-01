@@ -6,6 +6,7 @@ import com.lclizhao.sharebook.dao.BaseDao;
 import com.lclizhao.utils.ClassUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,7 @@ import java.util.Map;
         return null;
     }
 
+
     @Override
     public void deleteObjectByIds(Serializable... ids) {
         if(ids!=null&&ids.length>0){
@@ -76,20 +78,33 @@ import java.util.Map;
 
     @Override
     public List<T> findCollectionByConditionNoPage(String condition, Object[] params, Map<String, String> orderby) {
-        String hql="from"+entityClass.getSimpleName()+" o where 1=1";
+        String hql="from "+entityClass.getSimpleName()+" o where 1=1";
         String orderbyCondition=this.orderbyHql(orderby);
         String finalhql=hql+condition+orderbyCondition;
-        return getCurrentSession().createQuery(finalhql).list();
+        Query query =getCurrentSession().createQuery(finalhql);
+        if(params!=null&&params.length>0){
+            for (int i = 0; i < params.length; i++) {
+                query.setParameter(i,params[i]);
+            }
+        }
+        return query.list();
     }
 
 
 
     @Override
-    public List<T> findCollectionByConditionPage(String condition, Object[] params, Map<String, String> orderby, int pageNo, int oageSize) {
-        String hql="from"+entityClass.getSimpleName()+" o where 1=1";
+    public List<T> findCollectionByConditionPage(String condition, Object[] params, Map<String, String> orderby, int start, int oageSize) {
+        String hql="from "+entityClass.getSimpleName()+" o where 1=1";
         String orderbyCondition=this.orderbyHql(orderby);
         String finalhql=hql+condition+orderbyCondition;
-        return getCurrentSession().createQuery(finalhql).setMaxResults(oageSize).setFirstResult((pageNo - 1) * oageSize).list();
+        Query query =getCurrentSession().createQuery(finalhql);
+        if(params!=null&&params.length>0){
+            for (int i = 0; i < params.length; i++) {
+                query.setParameter(i,params[i]);
+            }
+        }
+
+        return query.setMaxResults(oageSize).setFirstResult(start).list();
     }
     /*
        顺序的拼接

@@ -33,6 +33,7 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="com.lclizhao.sharebook.daomain.Book"/>
-
+        <mapping class="com.lclizhao.sharebook.daomain.User"/>
+        <mapping class="com.lclizhao.sharebook.daomain.User_Book"/>
     </session-factory>
 </hibernate-configuration>

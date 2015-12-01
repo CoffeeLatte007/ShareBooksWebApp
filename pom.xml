@@ -58,7 +58,7 @@
       <version>${jersey.version}</version>
     </dependency>
 
-    <!-- media type -->
+    <!-- media type moxyjson-->
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-moxy</artifactId>
@@ -210,14 +210,14 @@
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>${org.hibernate-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${org.hibernate-version}</version>
     </dependency>
-
+    <!--JWT-->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>0.6.0</version>
+    </dependency>
   </dependencies>
 </project>
