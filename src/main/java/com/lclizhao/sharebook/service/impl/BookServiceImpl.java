@@ -4,7 +4,9 @@ package com.lclizhao.sharebook.service.impl;/**
 
 import com.lclizhao.sharebook.dao.BookDao;
 import com.lclizhao.sharebook.daomain.Book;
+import com.lclizhao.sharebook.resource.Exception.AppException;
 import com.lclizhao.sharebook.service.BookService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,9 +37,29 @@ public class BookServiceImpl implements BookService{
         return null;
     }
 
+    //针对自定义的图书和非自定义的图书
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,readOnly = false)
     public Book save(Book book) {
-        bookDao.save(book);
+        if(book.getiSBN()==null){
+            bookDao.save(book);
+        }
+        else{
+            String condition="";
+            //参数列表
+            List<Object> paramsList = new ArrayList<Object>();
+            if(StringUtils.isNotBlank(book.getiSBN())){
+                condition += " and o.iSBN=? ";
+                paramsList.add(book.getiSBN());
+            }
+           List<Book> list= bookDao.findCollectionByConditionNoPage(condition, paramsList.toArray(), null);
+
+            if(list!=null&&list.size()>0){
+                return list.get(0);
+            }
+            else {
+                bookDao.save(book);
+            }
+        }
         return book;
     }
 }

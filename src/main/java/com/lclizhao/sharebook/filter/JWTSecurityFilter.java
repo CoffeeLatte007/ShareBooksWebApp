@@ -56,7 +56,7 @@ public class JWTSecurityFilter implements ContainerRequestFilter{
         String method = containerRequestContext.getMethod().toLowerCase();
         String path = ((ContainerRequest) containerRequestContext).getPath(true).toLowerCase();
         if (("get".equals(method) && ("application.wadl".equals(path) || "application.wadl/xsd0.xsd".equals(path)))
-                || ("post".equals(method) &&( "authentication".equals(path)||"regist".equals(path)))) {
+                || ("post".equals(method) &&( "authentication".equals(path)||"regist".equals(path)))||("get".equals(method) && "user".equals(path))) {
             // pass through the filter.
             containerRequestContext.setSecurityContext(new SecurityContextAuthorizer(uriInfo,new AuthorPricinple("pass"), new String[]{"pass"}));
             return;

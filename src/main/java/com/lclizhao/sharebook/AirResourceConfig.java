@@ -32,7 +32,7 @@ public class AirResourceConfig extends ResourceConfig {
         register(JWTSecurityFilter.class);
         packages("com.lclizhao.sharebook.resource");
         register(RolesAllowedDynamicFeature.class);//角色控制
-        register(KeyUtil.class);
+//        register(KeyUtil.class);
 //        final Key key= KeyUtil.getKey();
 //        register(new AbstractBinder() {
 //            @Override

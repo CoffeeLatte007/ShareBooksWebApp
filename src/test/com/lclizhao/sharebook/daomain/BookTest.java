@@ -42,19 +42,13 @@ public class BookTest {
     @Test
     public void save3(){
         Session session=HibernateUtils.sessionFactory.openSession();
-        User user=new User();
-        user.setTelphone("18428368642");
-        user.setPassword("a123456");
-        user.setRegDate(new Date());
-        session.save(user);
-        Book book=new Book();
-        book.setBookName("java编程思想");
-        book.setiSBN("23217389217389");
-        session.save(book);
-        User_Book user_book=new User_Book();
-        user_book.setBook(book);
-        user_book.setUser(user);
+
+
         Transaction t=session.beginTransaction();
+        User_Book user_book=new User_Book();
+        user_book.setDate(new Date());
+        user_book.setUserId("40289f0d51581b630151581b6d080000");
+        user_book.setBookId("2bd8d910515d7e4101515d7e4f880000");
         session.save(user_book);
         t.commit();
         session.close();

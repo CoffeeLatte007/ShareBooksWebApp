@@ -33,16 +33,8 @@ public class Book implements Serializable{
     private String iSBN;
     @Column(name = "publisher",nullable=true,length = 30)
     private String publisher;
-    @OneToMany(cascade={CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},fetch=FetchType.LAZY,mappedBy="user")
-    private Set<User_Book> user_book;
 
-    public Set<User_Book> getUser_book() {
-        return user_book;
-    }
 
-    public void setUser_book(Set<User_Book> user_book) {
-        this.user_book = user_book;
-    }
 
     public String getAuthor() {
         return author;

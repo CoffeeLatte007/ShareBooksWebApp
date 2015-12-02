@@ -3,14 +3,19 @@ package com.lclizhao.sharebook.resource;/**
  */
 
 import com.lclizhao.sharebook.daomain.Book;
+import com.lclizhao.sharebook.daomain.User_Book;
+import com.lclizhao.sharebook.resource.Exception.AppException;
 import com.lclizhao.sharebook.service.BookService;
+import com.lclizhao.utils.bookCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * @Name:
@@ -19,7 +24,7 @@ import javax.ws.rs.core.MediaType;
  * @Create Date: 2015-11-26（创建日期）
  * @Description:Book的资源类
  */
-@Path("books")
+@Path("book")
 public class BookResource  {
     @Autowired
     private BookService bookService;
@@ -27,17 +32,14 @@ public class BookResource  {
      * <p>saveBook.</p>
      *
      * @param book 书.
-     * @return Book
+     * @return Book 状态码 ISBN为null的均为自定义图书
      */
     @POST
     @Produces({ MediaType.APPLICATION_JSON })
     @Consumes({ MediaType.APPLICATION_JSON })
-    public Book save(final Book book){
-        if(book!=null&&book.getBookName()!=null){
-            return bookService.save(book);
-        }
-        book.setBookName("添加失败");
-        return book;
+    public Response save(final Book book) throws AppException{
+        bookCheck.check(book);
+        return Response.status(200).entity(bookService.save(book)).build();
     }
 
 }
