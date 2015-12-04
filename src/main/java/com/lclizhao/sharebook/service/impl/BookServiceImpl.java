@@ -37,6 +37,11 @@ public class BookServiceImpl implements BookService{
         return null;
     }
 
+    @Override
+    public Book getByid(String bookId) {
+        return bookDao.getById(bookId);
+    }
+
     //针对自定义的图书和非自定义的图书
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,readOnly = false)
     public Book save(Book book) {

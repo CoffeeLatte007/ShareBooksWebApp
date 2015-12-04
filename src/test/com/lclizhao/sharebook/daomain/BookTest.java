@@ -48,7 +48,7 @@ public class BookTest {
         User_Book user_book=new User_Book();
         user_book.setDate(new Date());
         user_book.setUserId("40289f0d51581b630151581b6d080000");
-        user_book.setBookId("2bd8d910515d7e4101515d7e4f880000");
+        user_book.setBookId("40289f0d5162dbf7015162dd194a0000");
         session.save(user_book);
         t.commit();
         session.close();

@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.Servlet;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;

@@ -75,7 +75,7 @@ public class UserResource {
         else {
             message="user has regeisted";
             logger.error(message);
-            throw new AppException(200,1005,"link",message,message);
+            throw new AppException(409,1005,"link",message,message);
         }
     }
 

@@ -1,6 +1,4 @@
-package com.lclizhao.utils;/**
- * Created by lizhaoz on 2015/12/2.
- */
+package com.lclizhao.utils;
 
 import com.lclizhao.sharebook.daomain.Book;
 import com.lclizhao.sharebook.resource.Exception.AppException;
@@ -9,10 +7,10 @@ import com.lclizhao.sharebook.resource.Exception.AppException;
  * @Name:
  * @Author: lizhao（作者）
  * @Version: V1.00 （版本号）
- * @Create Date: 2015-11-26（创建日期）
+ * @Create Date: 2015-11-30（创建日期）
  * @Description:
  */
-public class bookCheck  {
+public class BookCheckUtils {
     public static void check(Book book) throws AppException{
         String message="";
         if (book.getBookName()==null){

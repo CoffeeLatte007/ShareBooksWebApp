@@ -3,6 +3,7 @@ package com.lclizhao.sharebook.service;/**
  */
 
 import com.lclizhao.sharebook.daomain.Book;
+import com.lclizhao.sharebook.resource.Exception.AppException;
 
 import java.util.List;
 
@@ -28,4 +29,6 @@ public interface BookService {
      *
      */
     public List<Book> findBookBylist(Book book,int pageNo,int pageSize);
+
+    Book getByid(String bookId) ;
 }

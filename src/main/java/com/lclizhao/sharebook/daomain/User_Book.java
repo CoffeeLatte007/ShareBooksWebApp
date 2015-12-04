@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Name:
@@ -32,7 +33,7 @@ public class User_Book {
     @Column(name="date",nullable = false)
     private Date date;
     @Column(name="rating")
-    private int rating;
+    private int rating=5;//设置默认为5
     @Column(name = "status",length = 10)
     private String status;
     @Column(name ="privcy",length = 10)
@@ -44,7 +45,7 @@ public class User_Book {
     }
 
     public void setUbId(String ubId) {
-        this.ubId = ubId;
+         this.ubId = ubId;
     }
 
     public String getBookId() {
